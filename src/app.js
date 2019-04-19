@@ -1,9 +1,12 @@
 const express = require('express')
 const mysql = require('mysql')
+const hbs = require('hbs')
 const path = require('path')
 
 //path to the public directory
 const publicDirectoryPath = path.join(__dirname, '../public')
+const partialsPath = path.join(__dirname, '../templates/partials')
+const viewsPath = path.join(__dirname, '../templates/views')
 
 // Create mysql connection
 const db = mysql.createConnection({
@@ -23,6 +26,11 @@ db.connect((err)=>{
 
 
 const app = express()
+
+//setting up handlebars engines, views directory and registering partials for hbs
+app.set('view engine', 'hbs')
+app.set('views', viewsPath)
+hbs.registerPartials(partialsPath)
 
 // making public directory available to the application
 app.use(express.static(publicDirectoryPath))
