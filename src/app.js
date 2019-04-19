@@ -20,7 +20,7 @@ const db = mysql.createConnection({
 //connect to mysql database
 db.connect((err)=>{
     if(err) {
-        console.log(err)
+        console.log("Mysql connection failed \n Error : "+JSON.stringify(err,undefined,2))
     }
     console.log('Mysql connected')
 })
@@ -81,8 +81,14 @@ app.post('/user_search', (req,res)=>{
         } else if(results.length === 0) {
             return res.send('No record found with the Email id provided!')
         }
+
         console.log(results)
-        res.send(results)
+        res.render('search-result', {
+            userName: results[0].userName,
+            password: results[0].password,
+            emailId: results[0].emailId,
+            phoneNumber: results[0].phoneNo
+        })
     })
 })
 
