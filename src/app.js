@@ -1,8 +1,11 @@
 const express = require('express')
 const mysql = require('mysql')
+const path = require('path')
 
-// Create connection
+//path to the public directory
+const publicDirectoryPath = path.join(__dirname, '../public')
 
+// Create mysql connection
 const db = mysql.createConnection({
     host : 'db-intern.ciupl0p5utwk.us-east-1.rds.amazonaws.com',
     user : 'dummyUser',
@@ -10,8 +13,7 @@ const db = mysql.createConnection({
     database : 'db_intern'
 })
 
-//connect
-
+//connect to mysql database
 db.connect((err)=>{
     if(err) {
         console.log(err)
@@ -22,17 +24,20 @@ db.connect((err)=>{
 
 const app = express()
 
-// Create db
-app.get('/createdb', (req, res)=>{
+// making public directory available to the application
+app.use(express.static(publicDirectoryPath))
+
+// show tables
+app.get('/show', (req, res)=>{
     let sql = 'SELECT* FROM userData'
     db.query(sql, (err, result)=>{
         if(err) console.log(err)
         console.log(result)
-        res.send('database created...')
+        res.send(result)
     })
 })
 
-
+//starting the server
 app.listen('3000', ()=>{
     console.log('Server started on port 3000')
 })
