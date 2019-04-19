@@ -1,0 +1,23 @@
+<html>
+    <body>
+        <div class="div1">
+          Create a user by filling out the fields below:
+          <form action="/user_create" method="POST">
+              <input placeholder="User name" name="create_user_name"/>
+              <input placeholder="Password" name="create_password"/>
+              <input placeholder="Email Id" name="create_email_id"/>
+              <input placeholder="Phone Number" name="create_phone_number"/>
+              <button>Submit</button>
+          </form>
+        </div>
+
+        <div class="div2">
+            Search a user by filling out the email id field below:
+          <form action="/user_search" method="POST">
+              <input placeholder="Search Email Id" name="search_email_id"/>
+              <button>Submit</button>
+          </form>
+        </div>
+        
+    </body>
+</html>
