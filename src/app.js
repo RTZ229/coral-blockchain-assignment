@@ -14,7 +14,8 @@ const db = mysql.createConnection({
     host : 'db-intern.ciupl0p5utwk.us-east-1.rds.amazonaws.com',
     user : 'dummyUser',
     password : 'dummyUser01',
-    database : 'db_intern'
+    database : 'db_intern',
+    multipleStatements: true
 })
 
 //connect to mysql database
@@ -43,7 +44,7 @@ app.get('', (req,res)=>{
     res.render('index')
 })
 
-//taking an input from the html web form
+//Taking an input from the html web form and creating a user record in table userData
 app.post('/user_create',(req,res)=>{
     console.log('Trying to create new user...')
     const userName = req.body.create_user_name
@@ -51,7 +52,9 @@ app.post('/user_create',(req,res)=>{
     const phoneNumber = req.body.create_phone_number
     const password = req.body.create_password
     const dateTime = new Date()
-    const queryString = "INSERT INTO userData (userName,emailId,phoneNo,password, dateTime) VALUES (?,?,?,?,?)"
+
+
+    const queryString = "SET @userName = ?; SET @emailId = ?; SET @phoneNumber = ?; SET @password = ?; SET @dateTime = ?; CALL userAddOrEdit(@userName,@emailId,@phoneNumber,@password,@dateTime);"
 
     db.query(queryString,[userName,emailId,phoneNumber,password,dateTime],(err, results, fields)=>{
         if (err){
@@ -59,12 +62,32 @@ app.post('/user_create',(req,res)=>{
             res.sendStatus(500)
             return
         }
-        console.log('Inserted a new user with id:', results.insertId)
-        res.end()
+        const flag = results[5][0].flag
+        const data = results[6][0]
+        if(flag === 1) {
+            res.render('user-create-update', {
+                message: 'User with Email Id: '+ emailId +' already exists. Updated the record successfully with the data provided in html form!',
+                userName:data.userName,
+                emailId: data.emailId,
+                phoneNumber: data.phoneNo,
+                password: data.password,
+                dateTime: data.dateTime
+            })
+        } else {
+            res.render('user-create-update', {
+                message:'Created a new user with following data \n',
+                userName: data.userName,
+                emailId: data.emailId,
+                phoneNumber: data.phoneNo,
+                password: data.password,
+                dateTime: data.dateTime
+            })
+        }
+
     })
     
     console.log(userName,password,emailId,phoneNumber)
-    res.end()
+    console.log(dateTime)
 })
 
 //Searching a record by email id
@@ -87,18 +110,9 @@ app.post('/user_search', (req,res)=>{
             userName: results[0].userName,
             password: results[0].password,
             emailId: results[0].emailId,
-            phoneNumber: results[0].phoneNo
+            phoneNumber: results[0].phoneNo,
+            dateTime: results[0].dateTime
         })
-    })
-})
-
-// show all records
-app.get('/show', (req, res)=>{
-    let sql = 'SELECT* FROM userData'
-    db.query(sql, (err, rows, fields)=>{
-        if(err) console.log(err)
-        console.log(rows)
-        res.send(rows)
     })
 })
 

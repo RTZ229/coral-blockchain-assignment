@@ -1,7 +1,11 @@
 <html>
+    <head>
+        <link rel="stylesheet" href="/css/styles.css">
+    </head>
     <body>
+        <h1>Please fill out the data to search, update or create a user</h1>
         <div class="div1">
-          Create a user by filling out the fields below:
+          <h2>Create or update user by filling out the fields below:</h2>
           <form action="/user_create" method="POST">
               <input placeholder="User name" name="create_user_name"/>
               <input placeholder="Password" name="create_password"/>
@@ -12,7 +16,7 @@
         </div>
 
         <div class="div2">
-            Search a user by filling out the email id field below:
+            <h2>Search a user by filling out the email id field below:</h2>
           <form action="/user_search" method="POST">
               <input placeholder="Search Email Id" name="search_email_id"/>
               <button>Submit</button>

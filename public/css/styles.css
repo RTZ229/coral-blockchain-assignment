@@ -1,0 +1,30 @@
+h1 {
+    margin-left: 200px;
+}
+
+h2 {
+    color: #888888;
+    margin: 48px;
+}
+
+div.div1 {
+    margin: 130px;
+    border: solid;
+}
+
+div.div2 {
+    margin: 130px;
+    border: solid;
+}
+
+form {
+    margin: 48px;
+}
+
+table, th, td {
+    margin: 200px;
+    margin-left: 200px;
+    border: solid;
+    padding: 48px;
+    text-align: center;
+}
