@@ -6,6 +6,7 @@ h1 {
     margin-left: 250px;
     font-family: Arial, Helvetica, sans-serif;
     color: rgb(2, 2, 2);
+    align-content: center;
 }
 
 h2 {
@@ -30,9 +31,16 @@ form {
     margin: 48px;
 }
 
-input {
+input.in1 {
     padding: 16px;
     border: solid;
+    width: 250px;
+}
+
+input.in2 {
+    padding: 16px;
+    border: solid;
+    width: 1000px;
 }
 
 button {
