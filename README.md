@@ -71,7 +71,7 @@ due to a bad connection with mysql or othewise.
 
 * After all this I took on to style my application using proper css styling techniques.
 
-## web sources:
+## Web sources:
 
 nodejs udemy course
 https://www.youtube.com/watch?v=4fWWn2Pe2Mk
@@ -103,5 +103,4 @@ and learning few new commands that till now I had not come across.
 
 * Since apart from mysql there are other databases also available like mongoDB(noSQL DB)
 * You could ask the candidates to create an application compatible with mongoDB as well.
-* Adding a delete function in the assignment would also be fun and challenging at the same time.
 * I thoroughly enjoyed doing this assignment looking forward to hearing from you.

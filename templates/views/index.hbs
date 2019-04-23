@@ -3,27 +3,38 @@
         <link rel="stylesheet" href="/css/styles.css">
     </head>
     <body>
-        <h1>Please fill out the data to search, update or create a user</h1>
-        <div class="div1">
+
+        <h1 class="indexh1">Please fill out the data to search, update, create or delete a user</h1>
+
+        <div>
           <h2>Create or update user by filling out the fields below:</h2>
           <form action="/user_create" method="POST">
               <input class="in1" placeholder="User name" name="create_user_name"/>
               <input class="in1" placeholder="Password" name="create_password"/>
               <input class="in1" placeholder="Email Id" name="create_email_id"/>
               <input class="in1" placeholder="Phone Number" name="create_phone_number"/>
-              <button>Submit</button>
+              <button>Create</button>
           </form>
           <marquee behavior="sliding" direction="right" scrollamount="20%">Created by RTZ!</marquee>
         </div>
 
-        <div class="div2">
+        <div>
             <h2>Search a user by filling out the email id field below:</h2>
           <form action="/user_search" method="POST">
               <input class="in2" placeholder="Search Email Id" name="search_email_id"/>
-              <button>Submit</button>
+              <button>Search</button>
           </form>
           <marquee behavior="scrolling" direction="left" scrollamount="20%">Created by RTZ!</marquee>
         </div>
-        
+
+        <div>
+            <h2>Delete a user by filling out the email id field below:</h2>
+            <form action="/user_delete" method="POST">
+                <input class="in2" placeholder="Delete Email Id Record" name="delete_email_id">
+                <button>Delete</button>
+            </form>
+            <marquee behavior="scrolling" direction="right" scrollamount="20%">Created by RTZ!</marquee>
+        </div>
+
     </body>
 </html>

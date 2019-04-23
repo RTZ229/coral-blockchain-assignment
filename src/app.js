@@ -22,6 +22,7 @@ const db = mysql.createConnection({
 db.connect((err)=>{
     if(err) {
         console.log("Mysql connection failed \n Error : "+JSON.stringify(err,undefined,2))
+        return
     }
     console.log('Mysql connected')
 })
@@ -63,9 +64,9 @@ app.post('/user_create',(req,res)=>{
             res.sendStatus(500)
             return
         }
-        const flag = results[5][0].flag
-        const data = results[6][0]
-
+        const flag = results[4][0].flag
+        const data = results[5][0]
+        console.log(results)
         if(flag === 1) {
             res.render('user-create-update', {
                 message: 'User with Email Id: '+ emailId +' already exists. Updated the record successfully with the data provided in html form!',
@@ -87,9 +88,6 @@ app.post('/user_create',(req,res)=>{
         }
 
     })
-    
-    console.log(userName,password,emailId,phoneNumber)
-    console.log(dateTime)
 })
 
 //Searching a record by email id
@@ -104,7 +102,9 @@ app.post('/user_search', (req,res)=>{
             res.sendStatus(500)
             return
         } else if(results.length === 0) {
-            return res.send('No record found with the Email id provided!')
+            return res.render('error-response',{
+                message: 'No record found with the Email id provided!'
+            })
         }
 
         console.log(results)
@@ -118,6 +118,32 @@ app.post('/user_search', (req,res)=>{
     })
 })
 
+
+// Deleting a record by email id
+app.post('/user_delete', (req, res)=>{
+    const emailId = req.body.delete_email_id
+    const queryString = "SET @emailId = ?; CALL userDelete(@emailId);"
+    db.query(queryString, [emailId], (err, results,fields)=>{
+        if (err) {
+            console.log("failed to delete user : "+err)
+            res.sendStatus(500)
+            return
+        }
+        const flag = results[1][0].flag
+
+        if(flag === 1) {
+            res.render('error-response',{
+                message:'Deleted successfully!!'
+            })
+        } else {
+            res.render('error-response', {
+                message:'There is no record linked to the email id provided.'
+            })
+        }
+        
+        console.log(flag)
+    })
+})
 
 //starting the server
 app.listen('3000', ()=>{
