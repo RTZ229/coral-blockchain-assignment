@@ -76,9 +76,9 @@ https://www.npmjs.com/package/body-parser
 
 # b. My learnings
 
-*I learned how to use handlebars npm module and It's importance.
-*I learned a few new mysql techniques like using EXISTS(subquery).
-*I learned how to go about proper error handling and setting up flags to get a proper 
+* I learned how to use handlebars npm module and It's importance.
+* I learned a few new mysql techniques like using EXISTS(subquery).
+* I learned how to go about proper error handling and setting up flags to get a proper 
    visibility inside the application.
 
 # c. Challenging and fun parts
