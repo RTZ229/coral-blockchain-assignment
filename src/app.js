@@ -44,7 +44,7 @@ app.get('', (req,res)=>{
     res.render('index')
 })
 
-//Taking an input from the html web form and creating a user record in table userData
+//Taking an input from the index.hbs web form and creating a user record in table userData
 app.post('/user_create',(req,res)=>{
     console.log('Trying to create new user...')
     const userName = req.body.create_user_name
@@ -54,9 +54,10 @@ app.post('/user_create',(req,res)=>{
     const dateTime = new Date()
 
 
-    const queryString = "SET @userName = ?; SET @emailId = ?; SET @phoneNumber = ?; SET @password = ?; SET @dateTime = ?; CALL userAddOrEdit(@userName,@emailId,@phoneNumber,@password,@dateTime);"
+    const queryString = "SET @userName = ?; SET @emailId = ?; SET @phoneNumber = ?; SET @password = ?; CALL userAddOrEdit(@userName,@emailId,@phoneNumber,@password);"
 
-    db.query(queryString,[userName,emailId,phoneNumber,password,dateTime],(err, results, fields)=>{
+    db.query(queryString,[userName,emailId,phoneNumber,password],(err, results, fields)=>{
+
         if (err){
             console.log("failed to insert new user : "+err)
             res.sendStatus(500)
@@ -64,6 +65,7 @@ app.post('/user_create',(req,res)=>{
         }
         const flag = results[5][0].flag
         const data = results[6][0]
+
         if(flag === 1) {
             res.render('user-create-update', {
                 message: 'User with Email Id: '+ emailId +' already exists. Updated the record successfully with the data provided in html form!',
