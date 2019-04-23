@@ -82,19 +82,17 @@ https://www.npmjs.com/package/body-parser
    visibility inside the application.
 
 # c. Challenging and fun parts
-Most challenging part in creating this application was to setting up mysql procedures
+* Most challenging part in creating this application was to setting up mysql procedures
 and learning few new commands that till now I had not come across.
 
-rendering response pages to the application was also challenging.
+* rendering response pages to the application was also challenging.
 
-Most fun part was the testing and styling of my application.
-Watching the appliaction which I created work was very satisfying and fun.
+* Most fun part was the testing and styling of my application.
+* Watching the appliaction which I created work was very satisfying and fun.
 
 # d. Suggestions
 
-Since apart from mysql there are other databases also available like mongoDB(noSQL DB)
-You could ask the candidates to create an application compatible with mongoDB as well.
-
-Adding a delete function in the assignment would also be fun and challenging at the same time.
-
-I thoroughly enjoyed doing this assignment looking forward to hearing from you.
+* Since apart from mysql there are other databases also available like mongoDB(noSQL DB)
+* You could ask the candidates to create an application compatible with mongoDB as well.
+* Adding a delete function in the assignment would also be fun and challenging at the same time.
+* I thoroughly enjoyed doing this assignment looking forward to hearing from you.
