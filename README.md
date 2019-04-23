@@ -4,6 +4,16 @@
 
 [link]: https://github.com/RTZ229/coral-blockchain-assignment.git
 
+To run the app take the following steps:
+Under the terminal run the following commands:
+* git pull https://github.com/RTZ229/coral-blockchain-assignment.git
+* npm install // to install all node modules
+* node src/app.js
+  * server will be up on localhost:3000
+* open any web browser and enter in the search field localhost:3000
+* navigate through the application and enjoy.
+
+PS: I assume you have node installed on your machine
 
 # a. Steps I executed 
 * I have been learning nodejs from a udemy course named:
