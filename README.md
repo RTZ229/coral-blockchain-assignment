@@ -26,14 +26,13 @@ host and password details were provided by Coral-Blockchain team.
 to the application.
 
 * I created 2 seperate routes(post requests):
-
- * First route is called /user_create and it basically takes input from the req
+  * First route is called /user_create and it basically takes input from the req
    object in the callback function of the post request. I set up the index page to
    take four inputs from the index page and clicking the submit button it redirects
    to the /user_create route. Each input had a name property which can be accessed through
    the req object in app.js located in /src file of the application.
 
- * The second route is called /user_search and it basically takes input from the req
+   * The second route is called /user_search and it basically takes input from the req
    object in the callback function of the post request. I set up the index page to 
    take one input from the index page and clicking the submit button it redirects to the
    /user_search route.
