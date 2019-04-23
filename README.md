@@ -4,8 +4,8 @@
 
 [link]: https://github.com/RTZ229/coral-blockchain-assignment.git
 
-To run the app take the following steps:
-Under the terminal run the following commands:
+* To run the app take the following steps:
+* Under the terminal run the following commands:
 * git pull https://github.com/RTZ229/coral-blockchain-assignment.git
 * npm install // to install all node modules
 * node src/app.js
